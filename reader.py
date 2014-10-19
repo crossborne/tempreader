@@ -26,11 +26,12 @@ def read_temp():
         temp_f = temp_c * 9.0 / 5.0 + 32.0
         return temp_c, temp_f
 
-def send(value):
-    resp = requests.post('tempsensorweb.herokuapp.com/update', data=value)
+def send(val):
+    value = {'value': val}
+    resp = requests.post('http://tempsensorweb.herokuapp.com/update', data=value)
     return resp
 
 t = read_temp()
 r = send(t)
 print(t)
-print(r.status_cod)
+print(r.status_code)
