@@ -32,6 +32,6 @@ def send(val):
     return resp
 
 t = read_temp()
-r = send(t)
+r = send(t[0])
 print(t)
 print(r.status_code)
