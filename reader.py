@@ -1,5 +1,6 @@
 import os
 import time
+import requests
 
 os.system('modprobe w1-gpio')
 os.system('modprobe w1-therm')
@@ -25,6 +26,11 @@ def read_temp():
         temp_f = temp_c * 9.0 / 5.0 + 32.0
         return temp_c, temp_f
 
-while True:
-    print(read_temp())
-    time.sleep(1)
+def send(value):
+    resp = requests.post('temp-sensor.herokuapp.com/update', value=value)
+    return resp
+
+t = read_temp()
+r = send(t)
+print(t)
+print(r.status_cod)
