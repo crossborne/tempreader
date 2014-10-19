@@ -27,7 +27,7 @@ def read_temp():
         return temp_c, temp_f
 
 def send(value):
-    resp = requests.post('temp-sensor.herokuapp.com/update', value=value)
+    resp = requests.post('temp-sensor.herokuapp.com/update', data=value)
     return resp
 
 t = read_temp()
