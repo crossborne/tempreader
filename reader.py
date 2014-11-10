@@ -28,7 +28,7 @@ def read_temp():
 
 def send(val):
     value = {'value': val}
-    resp = requests.post('http://tempsensorweb.herokuapp.com/update', data=value)
+    resp = requests.post('http://85.25.216.29:8000/update', data=value)
     return resp
 
 t = read_temp()
